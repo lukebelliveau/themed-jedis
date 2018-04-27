@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 class Jedi extends Component {
     render(){
-        // Get data from route props
         const jedis = this.props.route.data;
         const jediNode = jedis.map((jedi) => {
             return (

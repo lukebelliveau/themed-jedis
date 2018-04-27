@@ -9,6 +9,18 @@ import Theme from './common/theme.component.jsx'
 import Jedi from './Jedi/jedi.component.jsx'
 import JediDetail from './Jedi/jedi-detail.component.jsx'
 
+render(
+    <Router history={browserHistory}>
+        <Route component={Main}>
+            <Route path="/" component={Home}/>
+            <Route path="/jedis" component={Jedi} data={data}/>
+            <Route path="/jedis/:id" component={JediDetail} data={data}/>
+            <Route path="/theme" component={Theme}/>
+        </Route>
+    </Router>,
+    document.getElementById('container')
+);
+
 const data = [
     {
         id: 1,
@@ -52,15 +64,3 @@ const data = [
         media: 'https://i.amz.mshcdn.com/uc3VRBSz-4hLwWXrpxiEYBzKqr0=/950x534/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fstory%2Fthumbnail%2F43431%2F731ad579-649b-4e25-b1b8-d0a78e7461ec.png',
     },
 ];
-
-render(
-    <Router history={browserHistory}>
-        <Route component={Main}>
-            <Route path="/" component={Home}/>
-            <Route path="/jedis" component={Jedi} data={data}/>
-            <Route path="/jedis/:id" component={JediDetail} data={data}/>
-            <Route path="/theme" component={Theme}/>
-        </Route>
-    </Router>,
-    document.getElementById('container')
-);
