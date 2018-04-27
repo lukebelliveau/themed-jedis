@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+import ThemeContext from '../ThemeContext';
+
 class Jedi extends Component {
-    render(){
+    render() {
         const jedis = this.props.route.data;
         const jediNode = jedis.map((jedi) => {
             return (
@@ -14,14 +16,20 @@ class Jedi extends Component {
                 </Link>
             )
         });
+
         return (
-            <div>
-                <h1>Jedis</h1>
-                <div className="list-group">
-                    {jediNode}
-                </div>
-            </div>
-        );
+            <ThemeContext.Consumer>
+                {({ primaryColor, secondaryColor }) => (
+                    <div>
+                        <h1 style={{ color: primaryColor }}>Jedis</h1>
+                        <div className="list-group" style={{ color: secondaryColor }}>
+                            {jediNode}
+                        </div>
+                    </div>
+                )}
+            </ThemeContext.Consumer>
+        )
+
     }
 }
 
